@@ -1,0 +1,673 @@
+/* ============================================
+   EVENTIFY - PREMIUM EXTERNAL STYLES
+   Complementary styles for index.html
+   ============================================ */
+
+/* Custom Properties - Extended Palette */
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff3d9a, #00e5ff);
+  --secondary-gradient: linear-gradient(135deg, #9d4edd, #00e5ff);
+  --tertiary-gradient: linear-gradient(135deg, #ffbe0b, #ff3d9a);
+  --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --text-glow: 0 0 20px rgba(255, 61, 154, 0.4);
+  --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 24px 64px rgba(157, 78, 221, 0.4);
+  --transition-smooth: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Global Reset & Enhancements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: rgba(255, 61, 154, 0.2);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar - Premium Design */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 5, 21, 0.9);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff3d9a, #9d4edd, #00e5ff);
+  border-radius: 10px;
+  border: 3px solid rgba(10, 5, 21, 0.9);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff3d9a, #00e5ff);
+  border-width: 2px;
+}
+
+/* Text Selection Styling */
+::selection {
+  background: rgba(255, 61, 154, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+::-moz-selection {
+  background: rgba(255, 61, 154, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Focus Visible Styles for Accessibility */
+*:focus-visible {
+  outline: 3px solid rgba(255, 61, 154, 0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Link Enhancements */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+a:focus {
+  outline: 2px solid rgba(255, 61, 154, 0.5);
+  outline-offset: 2px;
+}
+
+/* Enhanced Navbar Scroll Effect */
+.navbar.scrolled {
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.98), rgba(0, 229, 255, 0.92)) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  padding: 0.8rem 1.5rem;
+}
+
+/* Image Loading Animation */
+@keyframes imageLoad {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+img {
+  transition: var(--transition-smooth);
+  animation: imageLoad 0.5s ease-out;
+}
+
+img:hover {
+  filter: brightness(1.05) saturate(1.15) contrast(1.03);
+}
+
+/* Advanced Animations */
+
+/* Pulse Animation */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Shake Animation */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 61, 154, 0.3), 0 0 40px rgba(0, 229, 255, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(255, 61, 154, 0.5), 0 0 80px rgba(0, 229, 255, 0.4);
+  }
+}
+
+/* Rotate */
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Card Reveal */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotateX(-15deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+/* Gradient Border Animation */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply Animations to Elements */
+.event-card {
+  animation: cardReveal 0.7s ease-out backwards;
+}
+
+.event-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.event-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.event-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Enhanced Card Gradient Border Effect */
+.event-card::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #ff3d9a, #00e5ff, #9d4edd, #ffbe0b, #ff3d9a);
+  border-radius: 22px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  background-size: 400% 400%;
+  animation: rotateBorder 10s linear infinite;
+  filter: blur(8px);
+}
+
+.event-card:hover::after {
+  opacity: 0.8;
+}
+
+/* Form Elements Enhancement */
+.form-label {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.form-control:focus+.form-label,
+.form-control:not(:placeholder-shown)+.form-label {
+  color: #ff3d9a;
+}
+
+input,
+textarea,
+select {
+  transition: var(--transition-smooth);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px rgba(255, 61, 154, 0.2), 0 8px 24px rgba(255, 61, 154, 0.3) !important;
+  border-color: #ff3d9a !important;
+}
+
+/* Placeholder Animation */
+::placeholder {
+  transition: all 0.3s ease;
+}
+
+:focus::placeholder {
+  opacity: 0.3;
+  transform: translateX(10px);
+}
+
+/* Button Hover Shimmer Effect */
+.btn-cta:hover,
+.btn-book:hover,
+.btn-primary:hover {
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite linear;
+}
+
+/* Testimonial Card Enhancements */
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 120px;
+  font-family: Georgia, serif;
+  color: rgba(255, 61, 154, 0.1);
+  line-height: 1;
+  z-index: 0;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card h6 {
+  color: #ff3d9a;
+  font-weight: 700;
+  margin-top: 16px;
+  letter-spacing: 0.8px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card img {
+  transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover img {
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* About Section Image Effects */
+#about img {
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+#about img:hover {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 30px 80px rgba(157, 78, 221, 0.6);
+}
+
+/* Contact Form Container */
+#contact form {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  padding: 45px;
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px) saturate(150%);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-smooth);
+}
+
+#contact form:hover {
+  border-color: rgba(255, 61, 154, 0.3);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 61, 154, 0.2);
+}
+
+/* Footer Enhancements */
+footer {
+  position: relative;
+}
+
+footer p {
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+footer a {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 8px;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+footer a:hover {
+  background: rgba(255, 61, 154, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Utility Classes */
+
+/* Glow Text Effect */
+.glow-text {
+  text-shadow: 0 0 20px rgba(255, 61, 154, 0.6), 0 0 40px rgba(0, 229, 255, 0.4);
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(150%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-primary);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated Background */
+.animated-bg {
+  background: linear-gradient(-45deg, #ff3d9a, #00e5ff, #9d4edd, #ffbe0b);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover Lift */
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Spinning Element */
+.spin {
+  animation: rotate360 2s linear infinite;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ff3d9a;
+  border-radius: 50%;
+  animation: rotate360 1s linear infinite;
+}
+
+/* Responsive Design Enhancements */
+
+/* Tablet */
+@media (max-width: 991px) {
+  html {
+    font-size: 15px;
+  }
+
+  .hero-content {
+    padding: 40px 30px;
+  }
+
+  .event-card .card-img-top {
+    height: 220px;
+  }
+
+  #contact form {
+    padding: 35px 25px;
+  }
+
+  .testimonial-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero-content {
+    padding: 30px 20px;
+    border-radius: 18px;
+  }
+
+  .event-card {
+    margin-bottom: 24px;
+  }
+
+  .event-card .card-img-top {
+    height: 200px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .btn-cta,
+  .btn-ghost,
+  .btn-book {
+    font-size: 0.95rem;
+    padding: 11px 22px;
+  }
+
+  #contact form {
+    padding: 28px 20px;
+  }
+
+  .testimonial-card {
+    padding: 24px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 375px) {
+  html {
+    font-size: 13px;
+  }
+
+  .btn-cta,
+  .btn-ghost,
+  .btn-book {
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+
+  .event-card,
+  .testimonial-card,
+  #contact form {
+    border-width: 4px;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  button,
+  .btn {
+    border: 3px solid currentColor;
+  }
+}
+
+/* Print Styles */
+@media print {
+
+  .navbar,
+  footer,
+  .btn,
+  button,
+  .modal {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+}
+
+/* Performance Optimizations */
+.event-card,
+.testimonial-card,
+.hero-bg {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Custom Cursors */
+a,
+button {
+  cursor: pointer;
+}
+
+.btn-cta,
+.btn-book {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Smooth Scrollbar */
+html {
+  scrollbar-color: rgba(255, 61, 154, 0.8) rgba(10, 5, 21, 0.9);
+  scrollbar-width: thin;
+}
