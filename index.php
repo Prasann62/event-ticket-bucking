@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EVENTIFY - Premium Event Booking</title>
-  <meta name="description" content="Book tickets for exclusive concerts, DJ nights, and live events.">
+  <meta name="description" content="Book tickets for exclusive concerts, DJ nights, and live events. Experience unforgettable moments with Eventify.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,10 +28,10 @@
     <ul class="nav-links">
       <li><a href="#events">Events</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#testimonials">Artists</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="menu-toggle" aria-label="Menu">
+    <button class="menu-toggle" aria-label="Toggle Navigation Menu">
       <span></span>
       <span></span>
       <span></span>
@@ -40,10 +40,10 @@
 
   <!-- HERO SECTION -->
   <section class="hero" id="home">
-    <img src="./assets/bd.2.jpg" alt="Concert" class="hero-bg">
+    <img src="./assets/bd.2.jpg" alt="Concert Experience" class="hero-bg">
     
     <div class="hero-content">
-      <div class="hero-tag">Premium Experience</div>
+      <div class="hero-tag">World-Class Recording & Production</div>
       <h1 class="hero-title">
         <span>LIVE</span>
         <span class="accent">EVENTS</span>
@@ -53,7 +53,7 @@
         DJ nights, and live performances across India.
       </p>
       <div class="hero-cta">
-        <a href="#events" class="btn-primary">Explore Events</a>
+        <a href="#events" class="btn-primary">View Events</a>
         <a href="#about" class="btn-outline">Learn More</a>
       </div>
     </div>
@@ -68,7 +68,7 @@
   <section class="section" id="events">
     <div class="section-header">
       <div class="section-tag">Upcoming</div>
-      <h2 class="section-title">Featured Events</h2>
+      <h2 class="section-title">EVENTS</h2>
     </div>
 
     <div class="events-grid">
@@ -120,6 +120,10 @@
         </div>
       </div>
     </div>
+
+    <div class="events-view-more">
+      <a href="#" class="btn-outline">View Records</a>
+    </div>
   </section>
 
   <!-- ABOUT SECTION -->
@@ -159,31 +163,35 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS / ARTISTS SECTION -->
   <section class="section" id="testimonials">
     <div class="section-header">
-      <div class="section-tag">Testimonials</div>
-      <h2 class="section-title">What People Say</h2>
+      <div class="section-tag">Reviews</div>
+      <h2 class="section-title">ARTISTS</h2>
     </div>
 
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <img src="./assets/r.p.1.jpg" alt="Reviewer" class="testimonial-avatar">
+        <img src="./assets/r.p.1.jpg" alt="Rukmani Vasanth" class="testimonial-avatar">
         <p class="testimonial-text">"Amazing experience! Loved the vibe and the performances. Will definitely come back for more."</p>
         <div class="testimonial-name">Rukmani Vasanth</div>
       </div>
 
       <div class="testimonial-card">
-        <img src="./assets/r.p.2.jpg" alt="Reviewer" class="testimonial-avatar">
+        <img src="./assets/r.p.2.jpg" alt="Sai Pallavi" class="testimonial-avatar">
         <p class="testimonial-text">"The best event I've attended this year. The organization was flawless. Highly recommended!"</p>
         <div class="testimonial-name">Sai Pallavi</div>
       </div>
 
       <div class="testimonial-card">
-        <img src="./assets/sm.1.jpg" alt="Reviewer" class="testimonial-avatar">
+        <img src="./assets/sm.1.jpg" alt="SM" class="testimonial-avatar">
         <p class="testimonial-text">"Great organization and fantastic music. The atmosphere was electric. Can't wait for the next one."</p>
         <div class="testimonial-name">SM</div>
       </div>
+    </div>
+
+    <div class="events-view-more">
+      <a href="#" class="btn-outline">View Artists</a>
     </div>
   </section>
 
@@ -191,7 +199,7 @@
   <section class="section section-dark" id="contact">
     <div class="section-header">
       <div class="section-tag">Get in Touch</div>
-      <h2 class="section-title">Contact Us</h2>
+      <h2 class="section-title">BEAT ME</h2>
     </div>
 
     <div class="contact-container">
@@ -220,6 +228,7 @@
       <div class="footer-links">
         <a href="#events">Events</a>
         <a href="#about">About</a>
+        <a href="#testimonials">Artists</a>
         <a href="#contact">Contact</a>
         <a href="#">Facebook</a>
         <a href="#">Instagram</a>
@@ -301,8 +310,20 @@
     }
 
     // Mobile menu toggle
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      this.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
     });
 
     // Smooth scroll for anchor links
@@ -314,6 +335,29 @@
           target.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.event-card, .testimonial-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
     });
   </script>
 
@@ -346,7 +390,7 @@
                 text: 'Your tickets have been booked successfully.',
                 icon: 'success',
                 confirmButtonText: 'OK',
-                confirmButtonColor: '#e63946',
+                confirmButtonColor: '#dc143c',
                 background: '#0a0a0a',
                 color: '#ffffff'
               }).then(() => { window.location.href='index.php'; });
@@ -363,7 +407,7 @@
                 title: 'Error!',
                 text: 'Booking failed. Please try again.',
                 icon: 'error',
-                confirmButtonColor: '#e63946',
+                confirmButtonColor: '#dc143c',
                 background: '#0a0a0a',
                 color: '#ffffff'
               });

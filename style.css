@@ -1,6 +1,6 @@
 /* ============================================
-   EVENTIFY - BEAT RECORDS EXACT CLONE
-   Ultra Minimal Dark Theme
+   EVENTIFY - BEAT RECORDS INSPIRED DESIGN
+   Ultra Premium Dark Minimalist Theme
    ============================================ */
 
 /* Reset & Base */
@@ -14,12 +14,16 @@
 
 :root {
   --bg: #0a0a0a;
-  --bg-alt: #0f0f0f;
-  --accent: #e63946;
+  --bg-alt: #0d0d0d;
+  --bg-card: #111111;
+  --accent: #dc143c;
+  --accent-hover: #ff1744;
   --white: #ffffff;
-  --gray: #888888;
-  --gray-dark: #444444;
-  --border: rgba(255, 255, 255, 0.08);
+  --gray-light: #b0b0b0;
+  --gray: #6b6b6b;
+  --gray-dark: #333333;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
 }
 
 html {
@@ -28,13 +32,14 @@ html {
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg);
   color: var(--white);
   min-height: 100vh;
   overflow-x: hidden;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -42,9 +47,14 @@ a {
   color: inherit;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,7 +63,31 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
-  border-radius: 3px;
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ============================================
+   GRID TEXTURE OVERLAY (Beat Records Style)
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* ============================================
@@ -65,28 +99,41 @@ a {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 30px 60px;
+  padding: 35px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: transparent;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 20px 60px;
+  background: rgba(10, 10, 10, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 20px 80px;
   border-bottom: 1px solid var(--border);
 }
 
 .navbar-brand {
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 4px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: var(--white);
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-brand::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
 }
 
 .navbar-brand:hover {
@@ -95,29 +142,30 @@ a {
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 50px;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gray);
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
+  padding: 5px 0;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 1px;
   background: var(--accent);
-  transition: width 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links a:hover {
@@ -135,19 +183,20 @@ a {
   border: none;
   cursor: pointer;
   padding: 10px;
+  z-index: 1001;
 }
 
 .menu-toggle span {
   display: block;
-  width: 25px;
-  height: 2px;
+  width: 28px;
+  height: 1px;
   background: var(--white);
-  margin: 5px 0;
-  transition: all 0.3s ease;
+  margin: 7px 0;
+  transition: all 0.4s ease;
 }
 
 /* ============================================
-   HERO SECTION - Full Screen
+   HERO SECTION - Beat Records Full Screen
    ============================================ */
 .hero {
   position: relative;
@@ -155,9 +204,10 @@ a {
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: var(--bg);
 }
 
-/* Grid Overlay */
+/* Subtle Gradient Overlay */
 .hero::before {
   content: '';
   position: absolute;
@@ -165,71 +215,99 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  z-index: 1;
-  pointer-events: none;
+  background: linear-gradient(135deg,
+      rgba(10, 10, 10, 0.98) 0%,
+      rgba(10, 10, 10, 0.85) 40%,
+      rgba(10, 10, 10, 0.5) 70%,
+      rgba(10, 10, 10, 0.3) 100%);
+  z-index: 2;
 }
 
-/* Gradient Overlay */
+/* Side Red Accent Line */
 .hero::after {
   content: '';
   position: absolute;
-  top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg,
-      rgba(10, 10, 10, 1) 0%,
-      rgba(10, 10, 10, 0.9) 30%,
-      rgba(10, 10, 10, 0.6) 60%,
-      rgba(10, 10, 10, 0.4) 100%);
-  z-index: 1;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      transparent 20%,
+      var(--accent) 50%,
+      transparent 80%);
+  z-index: 10;
 }
 
 .hero-bg {
   position: absolute;
   top: 0;
   right: 0;
-  width: 70%;
+  width: 55%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 0;
+  z-index: 1;
+  filter: grayscale(30%) brightness(0.7);
+  transition: all 0.8s ease;
+}
+
+.hero:hover .hero-bg {
+  filter: grayscale(0%) brightness(0.85);
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
-  padding: 0 60px;
-  max-width: 700px;
+  padding: 0 80px;
+  max-width: 750px;
 }
 
 .hero-tag {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-  padding: 8px 16px;
+  color: var(--white);
+  margin-bottom: 35px;
+  padding: 12px 24px;
   border: 1px solid var(--accent);
+  background: rgba(220, 20, 60, 0.08);
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 900;
-  letter-spacing: 6px;
+  letter-spacing: 10px;
   text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 30px;
+  line-height: 0.95;
+  margin-bottom: 40px;
 }
 
 .hero-title span {
   display: block;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-title span:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.hero-title span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-title .accent {
@@ -237,17 +315,17 @@ a {
 }
 
 .hero-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--gray);
-  letter-spacing: 1px;
-  line-height: 1.8;
-  max-width: 450px;
-  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+  line-height: 2;
+  max-width: 480px;
+  margin-bottom: 50px;
 }
 
 .hero-cta {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   align-items: center;
 }
 
@@ -255,56 +333,74 @@ a {
   display: inline-block;
   background: var(--accent);
   color: var(--white);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 18px 40px;
+  padding: 20px 45px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-primary:hover {
-  background: #ff4757;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+  background: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(220, 20, 60, 0.35);
 }
 
 .btn-outline {
   display: inline-block;
   background: transparent;
-  color: var(--white);
-  font-size: 0.75rem;
+  color: var(--gray-light);
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 18px 40px;
+  padding: 20px 45px;
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .btn-outline:hover {
   border-color: var(--white);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-/* Scroll Indicator */
+/* Scroll Indicator - Beat Records Style */
 .scroll-down {
   position: absolute;
-  bottom: 40px;
-  left: 60px;
+  bottom: 50px;
+  left: 80px;
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .scroll-down span {
-  font-size: 0.65rem;
-  letter-spacing: 3px;
+  font-size: 0.55rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--gray);
   writing-mode: vertical-rl;
@@ -312,13 +408,15 @@ a {
 
 .scroll-line {
   width: 1px;
-  height: 80px;
+  height: 100px;
   background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollAnim 2s infinite;
+  animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes scrollAnim {
-  0% {
+@keyframes scrollPulse {
+
+  0%,
+  100% {
     transform: scaleY(0);
     transform-origin: top;
   }
@@ -332,19 +430,15 @@ a {
     transform: scaleY(1);
     transform-origin: bottom;
   }
-
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
 }
 
 /* ============================================
    SECTION STYLES
    ============================================ */
 .section {
-  padding: 120px 60px;
+  padding: 140px 80px;
   position: relative;
+  z-index: 1;
 }
 
 .section-dark {
@@ -353,27 +447,41 @@ a {
 
 .section-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .section-tag {
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: 4px;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 8px;
   text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
 }
 
 /* ============================================
-   EVENTS SECTION
+   EVENTS SECTION - Records Style Grid
    ============================================ */
 #events {
   background: var(--bg);
@@ -382,15 +490,15 @@ a {
 .events-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 2px;
 }
 
 .event-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
+  background: var(--bg-card);
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid var(--border);
 }
 
 .event-card::before {
@@ -398,136 +506,198 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  width: 3px;
-  height: 0;
+  width: 100%;
+  height: 2px;
   background: var(--accent);
-  transition: height 0.4s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
 }
 
 .event-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  border-color: var(--border-hover);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
 }
 
 .event-card:hover::before {
-  height: 100%;
+  transform: scaleX(1);
 }
 
 .event-card-image {
   position: relative;
-  height: 250px;
+  height: 280px;
   overflow: hidden;
+}
+
+.event-card-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 10, 0.9) 100%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.event-card:hover .event-card-image::before {
+  opacity: 1;
 }
 
 .event-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(40%) brightness(0.8);
-  transition: all 0.5s ease;
+  filter: grayscale(50%) brightness(0.75);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .event-card:hover .event-card-image img {
   filter: grayscale(0%) brightness(1);
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .event-card-content {
-  padding: 30px;
+  padding: 35px;
+  position: relative;
 }
 
 .event-card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  color: var(--white);
 }
 
 .event-card-meta {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--gray);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  letter-spacing: 1px;
 }
 
 .event-card-meta span {
   color: var(--accent);
+  font-size: 0.8rem;
 }
 
 .event-card-btn {
   display: block;
   width: 100%;
-  margin-top: 25px;
-  padding: 15px;
+  margin-top: 30px;
+  padding: 18px;
   background: transparent;
-  color: var(--white);
-  font-size: 0.7rem;
+  color: var(--gray-light);
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   text-align: center;
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .event-card-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
+  color: var(--white);
+}
+
+/* View More Button */
+.events-view-more {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.events-view-more .btn-outline {
+  padding: 18px 60px;
 }
 
 /* ============================================
-   ABOUT SECTION
+   ABOUT SECTION - Beat Records Style
    ============================================ */
 #about {
   background: var(--bg-alt);
+  position: relative;
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--accent) 50%,
+      transparent);
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 100px;
   align-items: center;
 }
 
+.about-content .section-tag {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
 .about-content h3 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 3px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  line-height: 1.3;
 }
 
 .about-content p {
   color: var(--gray);
-  line-height: 2;
-  margin-bottom: 20px;
+  line-height: 2.2;
+  margin-bottom: 25px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
 .about-info {
-  margin-top: 40px;
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid var(--border);
 }
 
 .about-info-item {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .about-info-item h6 {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .about-info-item p {
   color: var(--white);
   margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 .about-image {
@@ -536,30 +706,38 @@ a {
 
 .about-image img {
   width: 100%;
-  height: 500px;
+  height: 550px;
   object-fit: cover;
-  filter: grayscale(30%);
-  transition: filter 0.4s ease;
+  filter: grayscale(40%);
+  transition: all 0.6s ease;
 }
 
 .about-image:hover img {
   filter: grayscale(0%);
 }
 
-/* Image Frame */
+/* Image Frame - Beat Records Style */
 .about-image::before {
   content: '';
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: -20px;
-  bottom: -20px;
+  top: 30px;
+  left: 30px;
+  right: -30px;
+  bottom: -30px;
   border: 1px solid var(--accent);
   z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.about-image:hover::before {
+  top: 15px;
+  left: 15px;
+  right: -15px;
+  bottom: -15px;
 }
 
 /* ============================================
-   TESTIMONIALS
+   TESTIMONIALS - Artists Section Style
    ============================================ */
 #testimonials {
   background: var(--bg);
@@ -568,94 +746,146 @@ a {
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 2px;
 }
 
 .testimonial-card {
-  background: var(--bg-alt);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 40px;
+  padding: 50px 40px;
   text-align: center;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
 }
 
 .testimonial-card::before {
   content: '"';
   position: absolute;
-  top: 20px;
-  left: 30px;
-  font-size: 80px;
-  font-family: Georgia, serif;
+  top: 10px;
+  left: 25px;
+  font-size: 100px;
+  font-family: Georgia, 'Times New Roman', serif;
   color: var(--accent);
-  opacity: 0.2;
+  opacity: 0.08;
   line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.testimonial-card:hover::after {
+  transform: scaleX(1);
 }
 
 .testimonial-card:hover {
-  border-color: var(--accent);
+  border-color: var(--border-hover);
   transform: translateY(-5px);
 }
 
 .testimonial-avatar {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   filter: grayscale(100%);
-  margin-bottom: 25px;
-  transition: filter 0.4s ease;
+  margin: 0 auto 30px;
+  transition: all 0.5s ease;
+  border: 2px solid var(--border);
 }
 
 .testimonial-card:hover .testimonial-avatar {
   filter: grayscale(0%);
+  border-color: var(--accent);
 }
 
 .testimonial-text {
-  font-size: 0.95rem;
-  color: var(--gray);
+  font-size: 0.9rem;
+  color: var(--gray-light);
   font-style: italic;
-  line-height: 1.9;
-  margin-bottom: 25px;
+  line-height: 2;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
 }
 
 .testimonial-name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  display: inline-block;
+}
+
+.testimonial-name::before {
+  content: '— ';
   color: var(--accent);
 }
 
 /* ============================================
-   CONTACT SECTION
+   CONTACT SECTION - Beat Me Style
    ============================================ */
 #contact {
   background: var(--bg-alt);
+  position: relative;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
 }
 
 .contact-container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
 .contact-form {
   background: var(--bg);
   border: 1px solid var(--border);
-  padding: 50px;
+  padding: 60px;
+  position: relative;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
 }
 
 .form-group {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .form-label {
   display: block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--gray);
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .form-input {
@@ -663,11 +893,12 @@ a {
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--border);
-  padding: 15px 0;
+  padding: 18px 0;
   color: var(--white);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-family: inherit;
-  transition: border-color 0.3s ease;
+  transition: all 0.4s ease;
+  letter-spacing: 1px;
 }
 
 .form-input:focus {
@@ -677,38 +908,70 @@ a {
 
 .form-input::placeholder {
   color: var(--gray-dark);
+  letter-spacing: 1px;
 }
 
 textarea.form-input {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
 .form-submit {
   width: 100%;
   background: var(--accent);
   color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  padding: 20px;
+  padding: 24px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.form-submit:hover::before {
+  left: 100%;
 }
 
 .form-submit:hover {
-  background: #ff4757;
+  background: var(--accent-hover);
+  box-shadow: 0 15px 40px rgba(220, 20, 60, 0.3);
 }
 
 /* ============================================
-   FOOTER
+   FOOTER - Minimal Beat Records Style
    ============================================ */
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
-  padding: 60px;
+  padding: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
 }
 
 .footer-content {
@@ -718,63 +981,104 @@ textarea.form-input {
 }
 
 .footer-brand {
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 4px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 6px;
   text-transform: uppercase;
+  position: relative;
+  padding-left: 25px;
+}
+
+.footer-brand::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
 }
 
 .footer-links {
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .footer-links a {
-  font-size: 0.7rem;
-  letter-spacing: 2px;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gray);
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--accent);
+  color: var(--white);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
 }
 
 .footer-copyright {
   text-align: center;
-  margin-top: 40px;
-  padding-top: 40px;
+  margin-top: 60px;
+  padding-top: 60px;
   border-top: 1px solid var(--border);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--gray-dark);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 /* ============================================
-   MODAL STYLES
+   MODAL STYLES - Premium Dark
    ============================================ */
 .modal-content {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 0;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.7);
 }
 
 .modal-header {
   border-bottom: 1px solid var(--border);
-  padding: 25px 30px;
+  padding: 30px 35px;
+  position: relative;
+}
+
+.modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 35px;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
 }
 
 .modal-title {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--white);
 }
 
 .modal-body {
-  padding: 30px;
+  padding: 40px 35px;
 }
 
 .modal-body .form-control {
@@ -783,8 +1087,9 @@ textarea.form-input {
   border-bottom: 1px solid var(--border);
   border-radius: 0;
   color: var(--white);
-  padding: 15px 0;
-  font-size: 1rem;
+  padding: 18px 0;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
 }
 
 .modal-body .form-control:focus {
@@ -793,9 +1098,9 @@ textarea.form-input {
 }
 
 .modal-body .form-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--gray);
 }
@@ -804,37 +1109,88 @@ textarea.form-input {
   background: var(--accent);
   border: none;
   border-radius: 0;
-  padding: 18px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  padding: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  transition: all 0.4s ease;
 }
 
 .modal-body .btn-success:hover {
-  background: #ff4757;
+  background: var(--accent-hover);
+  box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
 }
 
 .btn-close-white {
   filter: invert(1);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.btn-close-white:hover {
+  opacity: 1;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
+@media (max-width: 1400px) {
+  .hero-title {
+    font-size: 5rem;
+    letter-spacing: 8px;
+  }
+}
+
 @media (max-width: 1200px) {
   .hero-title {
     font-size: 4rem;
+    letter-spacing: 6px;
+  }
+
+  .section {
+    padding: 100px 50px;
+  }
+
+  .navbar {
+    padding: 30px 50px;
+  }
+
+  .navbar.scrolled {
+    padding: 18px 50px;
   }
 }
 
 @media (max-width: 991px) {
   .navbar {
-    padding: 20px 30px;
+    padding: 25px 30px;
+  }
+
+  .navbar.scrolled {
+    padding: 18px 30px;
   }
 
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
   }
 
   .menu-toggle {
@@ -847,13 +1203,18 @@ textarea.form-input {
 
   .hero-bg {
     width: 100%;
-    opacity: 0.3;
+    opacity: 0.25;
+    filter: grayscale(40%) brightness(0.5);
+  }
+
+  .hero::before {
+    background: linear-gradient(180deg,
+        rgba(10, 10, 10, 0.8) 0%,
+        rgba(10, 10, 10, 0.95) 100%);
   }
 
   .hero::after {
-    background: linear-gradient(180deg,
-        rgba(10, 10, 10, 0.7) 0%,
-        rgba(10, 10, 10, 0.9) 100%);
+    display: none;
   }
 
   .hero-content {
@@ -863,6 +1224,7 @@ textarea.form-input {
 
   .hero-title {
     font-size: 3rem;
+    letter-spacing: 5px;
   }
 
   .hero-subtitle {
@@ -884,23 +1246,40 @@ textarea.form-input {
     padding: 80px 30px;
   }
 
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    letter-spacing: 5px;
+  }
+
   .events-grid,
   .testimonials-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 60px;
+  }
+
+  #about::before {
+    display: none;
   }
 
   .about-image::before {
     display: none;
   }
 
+  .about-image img {
+    height: 400px;
+  }
+
   .footer {
-    padding: 40px 30px;
+    padding: 50px 30px;
   }
 
   .footer-content {
@@ -908,34 +1287,55 @@ textarea.form-input {
     gap: 30px;
     text-align: center;
   }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 575px) {
   .hero-title {
     font-size: 2.2rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+  }
+
+  .hero-tag {
+    font-size: 0.5rem;
+    padding: 10px 18px;
   }
 
   .hero-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .btn-primary,
   .btn-outline {
-    padding: 15px 30px;
-    font-size: 0.7rem;
+    padding: 16px 35px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    letter-spacing: 4px;
   }
 
   .event-card-content {
-    padding: 25px;
+    padding: 28px;
+  }
+
+  .event-card-title {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
   }
 
   .contact-form {
-    padding: 30px;
+    padding: 35px 25px;
+  }
+
+  .testimonial-card {
+    padding: 40px 30px;
   }
 }
 
@@ -946,6 +1346,33 @@ textarea.form-input {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth Page Transitions */
+.section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover States for Interactive Elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
