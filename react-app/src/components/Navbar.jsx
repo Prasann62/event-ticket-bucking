@@ -28,12 +28,14 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/60 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                    ? 'top-4 mx-6 rounded-3xl bg-black/60 backdrop-blur-2xl border border-white/10 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
+                    : 'bg-transparent py-5'
                 }`}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <a href="#" className="flex items-center space-x-2 text-2xl font-bold tracking-tighter">
-                    <Ticket className="w-8 h-8 text-brand-accent" />
+                    <Ticket className="w-8 h-8 text-brand-blue" />
                     <span className="gradient-text">EVENTIFY</span>
                 </a>
 
@@ -46,7 +48,7 @@ const Navbar = () => {
                                 className="text-sm font-medium text-white/70 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all group-hover:w-full"></span>
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
                             </a>
                         </li>
                     ))}
