@@ -8,7 +8,7 @@ const Card = React.forwardRef(({ className, children, hoverEffect = true, ...pro
             ref={ref}
             whileHover={hoverEffect ? { y: -10, transition: { duration: 0.3 } } : {}}
             className={cn(
-                'glass rounded-3xl overflow-hidden transition-all duration-300 hover:border-brand-accent/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]',
+                'glass rounded-3xl overflow-hidden transition-all duration-300 hover:border-brand-cyan/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]',
                 className
             )}
             {...props}
