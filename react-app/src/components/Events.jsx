@@ -83,50 +83,61 @@ const Events = ({ onBookNow }) => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {events.map((event) => (
-                        <motion.div key={event.id} variants={itemVariants}>
-                            <Card className="h-full flex flex-col group">
+                        <motion.div key={event.id} variants={itemVariants} className="glow-border">
+                            <Card className="h-full flex flex-col group border-white/5 hover:border-brand-cyan/20">
                                 <div className="relative overflow-hidden aspect-video">
                                     <img
                                         src={event.image}
                                         alt={event.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <div className="absolute top-4 right-4">
-                                        <div className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-brand-cyan text-sm font-bold border border-white/10">
+                                    <div className="absolute top-4 right-4 z-20">
+                                        <div className="bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full text-brand-cyan text-sm font-bold border border-white/10 shadow-lg">
                                             {event.price}
                                         </div>
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+
+                                    {/* Animated Corner accent */}
+                                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-brand-blue/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 </div>
-                                <CardContent className="flex-grow flex flex-col">
-                                    <h3 className="text-xl font-bold mb-4 group-hover:text-brand-accent transition-colors">
+                                <CardContent className="flex-grow flex flex-col p-8">
+                                    <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-cyan transition-colors duration-300">
                                         {event.title}
                                     </h3>
-                                    <div className="space-y-3 mb-8 text-white/60 text-sm">
-                                        <div className="flex items-center space-x-2">
-                                            <Calendar className="w-4 h-4 text-brand-accent" />
-                                            <span>{event.date}</span>
+                                    <div className="space-y-4 mb-8 text-white/50 text-sm">
+                                        <div className="flex items-center space-x-3 group/item">
+                                            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover/item:border-brand-blue/30 transition-colors">
+                                                <Calendar className="w-4 h-4 text-brand-blue" />
+                                            </div>
+                                            <span className="group-hover:text-white transition-colors">{event.date}</span>
                                         </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Clock className="w-4 h-4 text-brand-accent" />
-                                            <span>{event.time}</span>
+                                        <div className="flex items-center space-x-3 group/item">
+                                            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover/item:border-brand-blue/30 transition-colors">
+                                                <Clock className="w-4 h-4 text-brand-blue" />
+                                            </div>
+                                            <span className="group-hover:text-white transition-colors">{event.time}</span>
                                         </div>
-                                        <div className="flex items-center space-x-2">
-                                            <MapPin className="w-4 h-4 text-brand-accent" />
-                                            <span>{event.location}</span>
+                                        <div className="flex items-center space-x-3 group/item">
+                                            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover/item:border-brand-blue/30 transition-colors">
+                                                <MapPin className="w-4 h-4 text-brand-blue" />
+                                            </div>
+                                            <span className="group-hover:text-white transition-colors">{event.location}</span>
                                         </div>
                                     </div>
                                     <Button
                                         variant="primary"
-                                        className="w-full mt-auto"
+                                        className="w-full mt-auto relative overflow-hidden group/btn"
                                         onClick={() => onBookNow(event.eventKey)}
                                     >
-                                        Book Now
-                                        <ArrowRight className="ml-2 w-4 h-4" />
+                                        <span className="relative z-10 flex items-center justify-center">
+                                            Book Now
+                                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                        </span>
                                     </Button>
                                 </CardContent>
                             </Card>
