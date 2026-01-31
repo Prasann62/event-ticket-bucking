@@ -39,7 +39,7 @@ const Artists = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="text-brand-accent font-semibold tracking-widest uppercase mb-4"
+                        className="text-brand-cyan font-semibold tracking-widest uppercase mb-4"
                     >
                         Reviews
                     </motion.div>
@@ -48,36 +48,42 @@ const Artists = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {artists.map((artist, idx) => (
                         <motion.div
                             key={artist.id}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.2 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ delay: idx * 0.2, duration: 0.8 }}
+                            className="glow-border"
                         >
-                            <Card className="p-8 h-full flex flex-col items-center text-center group">
-                                <div className="mb-6 relative">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                            <Card className="p-10 h-full flex flex-col items-center text-center group border-white/5 hover:border-brand-blue/30 backdrop-blur-3xl">
+                                <div className="mb-8 relative">
+                                    <div className="absolute -inset-2 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-accent rounded-full blur opacity-20 group-hover:opacity-60 transition duration-700" />
                                     <img
                                         src={artist.image}
                                         alt={artist.name}
-                                        className="relative w-24 h-24 rounded-full object-cover border-2 border-white/10"
+                                        className="relative w-28 h-28 rounded-full object-cover border-2 border-white/10 group-hover:border-white/30 transition-colors duration-500 shadow-2xl"
                                     />
-                                    <div className="absolute -bottom-2 -right-2 bg-brand-accent p-2 rounded-full border-2 border-brand-bg shadow-xl">
+                                    <div className="absolute -bottom-2 -right-2 bg-brand-blue p-2.5 rounded-full border-2 border-brand-bg shadow-xl z-10">
                                         <Quote className="w-4 h-4 text-white" />
                                     </div>
                                 </div>
-                                <div className="flex space-x-1 mb-4">
+
+                                <div className="flex space-x-1.5 mb-6">
                                     {[1, 2, 3, 4, 5].map((s) => (
-                                        <Star key={s} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                                        <Star key={s} className="w-4 h-4 fill-brand-cyan text-brand-cyan opacity-80" />
                                     ))}
                                 </div>
-                                <p className="text-white/60 italic mb-6 flex-grow">"{artist.text}"</p>
-                                <div>
-                                    <h4 className="text-lg font-bold text-white">{artist.name}</h4>
-                                    <p className="text-brand-cyan text-xs uppercase tracking-widest">{artist.role}</p>
+
+                                <p className="text-white/50 italic mb-8 flex-grow leading-relaxed font-light text-lg">
+                                    "{artist.text}"
+                                </p>
+
+                                <div className="pt-6 border-t border-white/5 w-full">
+                                    <h4 className="text-xl font-black text-white tracking-tight mb-1">{artist.name}</h4>
+                                    <p className="text-brand-cyan text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">{artist.role}</p>
                                 </div>
                             </Card>
                         </motion.div>
