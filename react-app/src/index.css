@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-    --color-brand-bg: #0b0f19;
-    --color-brand-accent: #8b5cf6;
-    /* purple-500 */
-    --color-brand-blue: #3b82f6;
-    /* blue-500 */
+    --color-brand-bg: #03060b;
+    --color-brand-accent: #2e1065;
+    /* violet-950 */
+    --color-brand-blue: #1d4ed8;
+    /* blue-700 */
     --color-brand-cyan: #06b6d4;
     /* cyan-500 */
 
@@ -14,11 +14,36 @@
 
     --radius-extra-large: 1rem;
     --radius-ultra-large: 1.5rem;
+
+    --animate-gradient-x: gradient-x 3s ease infinite;
+    --animate-shine: shine 0.8s ease-in-out;
+
+    @keyframes gradient-x {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    @keyframes shine {
+        100% {
+            left: 125%;
+        }
+    }
 }
 
 @layer base {
     body {
-        @apply bg-brand-bg text-white font-sans selection:bg-brand-accent selection:text-white;
+        @apply text-white font-sans selection:bg-brand-blue selection:text-white min-h-screen;
+        background: radial-gradient(circle at top right, #1e1b4b, transparent),
+            radial-gradient(circle at bottom left, #083344, transparent),
+            var(--color-brand-bg);
+        background-attachment: fixed;
     }
 
     h1,
@@ -33,15 +58,56 @@
 
 @layer components {
     .glass {
-        @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-xl;
+        @apply backdrop-blur-xl bg-white/[0.03] border border-white/10 shadow-2xl;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        position: relative;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass::before {
+        content: "";
+        @apply absolute inset-0 rounded-[inherit] border border-white/5 pointer-events-none;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    }
+
+    .glass:hover {
+        @apply bg-white/[0.05] border-white/20;
+        box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.5);
     }
 
     .glass-dark {
-        @apply backdrop-blur-lg bg-black/40 border border-white/10 shadow-2xl;
+        @apply backdrop-blur-2xl bg-black/60 border border-white/5 shadow-2xl;
     }
 
     .gradient-text {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400;
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-[#2E1065] via-[#1D4ED8] to-[#06B6D4] animate-gradient-x;
+        background-size: 200% 200%;
+        filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.3));
+    }
+
+    .section-divider {
+        @apply w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-12;
+    }
+
+    .glow-border {
+        @apply relative;
+    }
+
+    .glow-border::after {
+        content: "";
+        @apply absolute -inset-0.5 bg-gradient-to-r from-[#2E1065] via-[#1D4ED8] to-[#06B6D4] rounded-[inherit] blur opacity-0 transition duration-500 -z-10;
+    }
+
+    .glow-border:hover::after {
+        @apply opacity-40;
+    }
+
+    .glow-bg-blue {
+        @apply absolute bg-brand-blue/20 blur-[120px] rounded-full -z-10;
+    }
+
+    .glow-bg-cyan {
+        @apply absolute bg-brand-cyan/15 blur-[120px] rounded-full -z-10;
     }
 }
 
