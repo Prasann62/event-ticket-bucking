@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Color Gradients - Stitch & Code Bookmarks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            
+            /* Gradient 1: Midnight Aurora */
+            --g1-start: #2E1065;
+            --g1-mid: #1D4ED8;
+            --g1-end: #06B6D4;
+            
+            /* Gradient 2: Solar Flare */
+            --g2-start: #E11D48;
+            --g2-mid: #F59E0B;
+            --g2-end: #FEF3C7;
+            
+            /* Gradient 3: Cyber Jungle */
+            --g3-start: #059669;
+            --g3-mid: #0D9488;
+            --g3-end: #4F46E5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-preview {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .g1 { background: linear-gradient(135deg, var(--g1-start) 0%, var(--g1-mid) 50%, var(--g1-end) 100%); }
+        .g2 { background: linear-gradient(135deg, var(--g2-start) 0%, var(--g2-mid) 50%, var(--g2-end) 100%); }
+        .g3 { background: linear-gradient(135deg, var(--g3-start) 0%, var(--g3-mid) 50%, var(--g3-end) 100%); }
+
+        .card-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .codes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .code-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'Inter', monospace;
+            font-size: 0.8rem;
+            color: #eee;
+        }
+
+        .copy-btn {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        footer {
+            margin-top: 6rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Perfect Gradients</h1>
+        <p class="subtitle">Inspired by Stitch (Google Labs) and elite developer bookmark collections. Each gradient is meticulously balanced for visual harmony and premium dark-mode aesthetics.</p>
+    </header>
+
+    <div class="container">
+        <!-- Gradient 1 -->
+        <div class="card">
+            <div class="gradient-preview g1"></div>
+            <div class="card-info">
+                <h2>Midnight Aurora</h2>
+                <p>A deep, premium tech-styled gradient. Perfect for headers, backgrounds, and accents in high-end dashboards.</p>
+                <div class="codes">
+                    <span class="code-tag">#2E1065</span>
+                    <span class="code-tag">#1D4ED8</span>
+                    <span class="code-tag">#06B6D4</span>
+                </div>
+            </div>
+            <button class="copy-btn" onclick="copyCSS('linear-gradient(135deg, #2E1065 0%, #1D4ED8 50%, #06B6D4 100%)')">Copy CSS</button>
+        </div>
+
+        <!-- Gradient 2 -->
+        <div class="card">
+            <div class="gradient-preview g2"></div>
+            <div class="card-info">
+                <h2>Solar Flare</h2>
+                <p>A vibrant and modern warm transition. Adds energy and focus to CTAs and interactive elements.</p>
+                <div class="codes">
+                    <span class="code-tag">#E11D48</span>
+                    <span class="code-tag">#F59E0B</span>
+                    <span class="code-tag">#FEF3C7</span>
+                </div>
+            </div>
+            <button class="copy-btn" onclick="copyCSS('linear-gradient(135deg, #E11D48 0%, #F59E0B 50%, #FEF3C7 100%)')">Copy CSS</button>
+        </div>
+
+        <!-- Gradient 3 -->
+        <div class="card">
+            <div class="gradient-preview g3"></div>
+            <div class="card-info">
+                <h2>Cyber Jungle</h2>
+                <p>A creative, glowing theme that matches the "Beat Records" design inspiration. Balanced for deep contrast.</p>
+                <div class="codes">
+                    <span class="code-tag">#059669</span>
+                    <span class="code-tag">#0D9488</span>
+                    <span class="code-tag">#4F46E5</span>
+                </div>
+            </div>
+            <button class="copy-btn" onclick="copyCSS('linear-gradient(135deg, #059669 0%, #0D9488 50%, #4F46E5 100%)')">Copy CSS</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Developed for Beat Records Inspired Design
+    </footer>
+
+    <script>
+        function copyCSS(css) {
+            navigator.clipboard.writeText(css).then(() => {
+                alert('CSS copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
